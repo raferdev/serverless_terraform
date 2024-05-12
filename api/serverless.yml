@@ -47,6 +47,17 @@ functions:
           authorizer: authorizer
     environment:
       DYNAMODB_BOOKINGS: ${ssm:${self:custom.stage}-dynamodb-bookings-table}   
+
+  list_bookings:
+    role: ${ssm:${self:custom.stage}-list-bookings-iam-role}
+    handler: list-bookings/handler.list     
+    events:
+      - httpApi:
+          path: /bookings
+          method: get
+          authorizer: authorizer
+    environment:
+      DYNAMODB_BOOKINGS: ${ssm:${self:custom.stage}-dynamodb-bookings-table}   
             
   authorizer:
     handler: authorizer/handler.authorizer
