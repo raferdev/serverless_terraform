@@ -32,6 +32,11 @@ functions:
       DYNAMODB_USERS: ${ssm:${self:custom.stage}-dynamodb-users-table}
       JWT_SECRET: ${ssm:${self:custom.stage}-jwt-secret}
       EMAIL_GSI: ${ssm:${self:custom.stage}-email-gsi}
+  
+  authorizer:
+    handler: authorizer/handler.authorizer
+    environment:
+      JWT_SECRET: ${ssm:${self:custom.stage}-jwt-secret}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
