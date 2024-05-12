@@ -7,20 +7,20 @@ const docClient = DynamoDBDocumentClient.from(client);
 
 
 const create = async (event) => {
-
+  
     const body = JSON.parse(event.body);
-
     const command = new PutCommand({
       TableName: process.env.DYNAMODB_BOOKINGS,
       Item: {
         id: uuid(),
-        date: body.name,
-        user: event.requestContext.authorizer.authorizer
+        date: body.date,
+        user: event.requestContext.authorizer.lambda
       },
+      
     });
   
     const response = await docClient.send(command);
-    return response
+    return response 
 }
 
 export { create }
