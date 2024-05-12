@@ -8,7 +8,11 @@ provider:
 
   stage: dev
   region: us-east-1
-
+  httpApi:
+    authorizers:
+      authorizer:
+        type: request
+        functionName: authorizer
 
 functions:
   register:
@@ -32,7 +36,18 @@ functions:
       DYNAMODB_USERS: ${ssm:${self:custom.stage}-dynamodb-users-table}
       JWT_SECRET: ${ssm:${self:custom.stage}-jwt-secret}
       EMAIL_GSI: ${ssm:${self:custom.stage}-email-gsi}
-  
+
+  create_booking:
+    role: ${ssm:${self:custom.stage}-create-booking-iam-role}
+    handler: create-booking/handler.create     
+    events:
+      - httpApi:
+          path: /bookings
+          method: post
+          authorizer: authorizer
+    environment:
+      DYNAMODB_BOOKINGS: ${ssm:${self:custom.stage}-dynamodb-bookings-table}   
+            
   authorizer:
     handler: authorizer/handler.authorizer
     environment:
