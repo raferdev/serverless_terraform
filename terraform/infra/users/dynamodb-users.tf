@@ -31,7 +31,7 @@ resource "aws_ssm_parameter" "email_gsi" {
 }
 
 resource "aws_ssm_parameter" "aws_dynamodb_users_table" {
-    name = "/${var.environment}-dynamodb-users-table"
+    name = "${var.environment}-dynamodb-users-table"
     type = "String"
     value = "${aws_dynamodb_table.users.name}"
 }
