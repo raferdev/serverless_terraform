@@ -1,18 +1,5 @@
-import jwt from 'jwt';
+import jwt from 'jsonwebtoken';
 
-const authorizer = function(event, context, callback) {
-    const token = event.authorizationToken;
-
-    try {
-     const user =    jwt.verify(token, process.env.JWT_SECRET);
-     callback(null, generatePolicy('user', 'Allow', event.methodArn, user));
-
-    }catch (e) {
-
-    console.log(e)
-    callback(null, generatePolicy('user', 'Deny', event.methodArn));   
-    }
-}
 const generatePolicy = function(principalId, effect, resource, user) {
     const authResponse = {};
     
@@ -35,6 +22,23 @@ const generatePolicy = function(principalId, effect, resource, user) {
     }    
 
     return authResponse;
+}
+
+const authorizer = function(event, context, callback) {
+    const token = event.headers.authorization;
+
+    try {   
+
+        const user = jwt.verify(token, process.env.JWT_SECRET);
+
+        console.log(user, 'user')
+
+        callback(null, generatePolicy('user', 'Allow', event.routeArn, user));
+
+    }catch (e) {
+        console.error(e)
+        callback(null, generatePolicy('user', 'Deny', event.routeArn));   
+    }
 }
 
 export { authorizer }
