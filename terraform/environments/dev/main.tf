@@ -1,4 +1,4 @@
-module "Users" {
+module "users" {
     source = "../../infra/users"
     environment = "${var.environment}"
     admin_id = "${var.admin_id}"
@@ -10,14 +10,17 @@ module "Users" {
     jwt_secret = "${var.jwt_secret}"
 }
 
-module "Bookings" {
+module "bookings" {
     source = "../../infra/bookings"
     environment = "${var.environment}"
+   
+    sns_notifications_arn = "${module.notifications.notifications_topic_arn}"
+    
     write_capacity = 1
     read_capacity = 1
 }
 
-module "Notifications" {
+module "notifications" {
     source = "../../notifications"
     environment = "${var.environment}"
   
