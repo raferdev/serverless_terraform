@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  },
+  "name": "email-notification",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
