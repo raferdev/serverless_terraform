@@ -16,3 +16,9 @@ module "Bookings" {
     write_capacity = 1
     read_capacity = 1
 }
+
+module "Notifications" {
+    source = "../../notifications"
+    environment = "${var.environment}"
+  
+}
