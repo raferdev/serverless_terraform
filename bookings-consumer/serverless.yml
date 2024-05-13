@@ -20,3 +20,6 @@ functions:
       SNS_NOTIFICATIONS_TOPIC: ${ssm:${self:custom.stage}-notifications-topic}
 custom:
   stage: ${opt:stage, self:provider.stage}
+  memorySize:
+  dev: 128
+  prod: 2048
