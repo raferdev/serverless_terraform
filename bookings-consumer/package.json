@@ -1,0 +1,15 @@
+{
+  "name": "bookings-consumer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/util-dynamodb": "^3.574.0",
+    "moment": "^2.30.1"
+  }
+}
