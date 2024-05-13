@@ -37,3 +37,15 @@ variable "email_to" {
 variable "smtp_server" {
   
 }
+variable "sms_phone_from" {
+  
+}
+variable "sms_phone_to" {
+  
+}
+variable "twilio_api_key" {
+  
+}
+variable "twilio_account" {
+  
+}

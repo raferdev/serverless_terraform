@@ -31,9 +31,25 @@ resource "aws_ssm_parameter" "sms_phone_from" {
     value = "${var.sms_phone_from}"
   
 }
+
+
 resource "aws_ssm_parameter" "sms_phone_to" {
     name = "${var.environment}-sms-phone-to"
     type = "String"
     value = "${var.sms_phone_to}"
+  
+}
+
+resource "aws_ssm_parameter" "twilio_api_key" {
+    name = "${var.environment}-twilio-api-key"
+    type = "String"
+    value = "${var.twilio_api_key}"
+  
+}
+
+resource "aws_ssm_parameter" "twilio_account" {
+    name = "${var.environment}-twilio-account"
+    type = "String"
+    value = "${var.twilio_account}"
   
 }

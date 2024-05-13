@@ -7,8 +7,8 @@ module "users" {
     admin_email = "${var.admin_email}"
     admin_password = "${var.admin_password}"
     admin_name = "${var.admin_name}"
-    write_capacity = 1
-    read_capacity = 1
+    write_capacity = 10
+    read_capacity = 10
     jwt_secret = "${var.jwt_secret}"
 }
 
@@ -18,8 +18,8 @@ module "bookings" {
    
     sns_notifications_arn = "${module.notifications.notifications_topic_arn}"
     
-    write_capacity = 1
-    read_capacity = 1
+    write_capacity = 10
+    read_capacity = 10
 }
 
 module "notifications" {
@@ -36,4 +36,8 @@ module "system" {
     email_from_password = "${var.email_from_password}"
     email_to = "${var.email_to}"
     smtp_server = "${var.smtp_server}"
+    sms_phone_from = "${var.sms_phone_from}"
+    sms_phone_to = "${var.sms_phone_to}"
+    twilio_api_key = "${var.twilio_api_key}"
+    twilio_account = "${var.twilio_account}"
 }
