@@ -17,3 +17,7 @@ variable "admin_password" {
 variable "admin_name" {
   
 }
+
+variable "region" {
+  
+}
