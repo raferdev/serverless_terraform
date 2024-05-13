@@ -25,3 +25,15 @@ resource "aws_ssm_parameter" "smtp_server" {
     value = "${var.smtp_server}"
   
 }
+resource "aws_ssm_parameter" "sms_phone_from" {
+    name = "${var.environment}-sms-phone-from"
+    type = "String"
+    value = "${var.sms_phone_from}"
+  
+}
+resource "aws_ssm_parameter" "sms_phone_to" {
+    name = "${var.environment}-sms-phone-to"
+    type = "String"
+    value = "${var.sms_phone_to}"
+  
+}

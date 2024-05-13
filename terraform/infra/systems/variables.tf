@@ -16,3 +16,12 @@ variable "smtp_server" {
 variable "environment" {
   
 }
+variable "sms_phone_from" {
+  
+}
+variable "sms_phone_to" {
+  
+}
+variable "twillio_api_key" {
+  
+}
